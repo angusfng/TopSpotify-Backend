@@ -31,14 +31,12 @@ app.post("/refresh", (req, res) => {
   spotifyAPI
     .refreshAccessToken()
     .then((data) => {
-      console.log("The access token has been refreshed!");
       res.json({
         accessToken: data.body.access_token,
         expiresIn: data.body.expires_in,
       });
     })
     .catch((error) => {
-      console.log("refresh error");
       console.error(error.body.error_description);
       res.sendStatus(400);
     });
@@ -58,7 +56,6 @@ app.post("/getAccess", (req, res) => {
       });
     })
     .catch((error) => {
-      console.log("access error");
       console.error(error.body.error_description);
       res.sendStatus(400);
     });
